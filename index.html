@@ -363,7 +363,12 @@ function renderRentals(filter = "all"){
   // Rental data is fixed business content, never visitor-provided HTML.
   article.innerHTML=`
    <div class="card-visual">
-    <img src="${IMAGE_BASE+r.image}" alt="${r.name}" loading="lazy">
+${r.image
+ ? `<img src="${IMAGE_BASE+r.image}" alt="${r.name}" loading="lazy">`
+ : `<div style="height:235px;display:grid;place-items:center;
+      background:#eee8fb;font-size:65px;color:var(--purple);"
+      aria-hidden="true">${r.icon}</div>`
+}
     <span class="tag">${r.tag}</span>
    </div>
    <div class="card-body">
